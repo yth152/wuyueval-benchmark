@@ -1,0 +1,24 @@
+[Unit]
+Description=Wuyu AI application and background scheduler
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=wuyu
+Group=wuyu
+WorkingDirectory=/opt/wuyu-ai-platform/official
+EnvironmentFile=/etc/wuyu/platform.env
+ExecStart=/opt/wuyu-ai-platform/.venv/bin/python -m uvicorn app_main:app --host 127.0.0.1 --port 8920 --workers 1 --no-access-log --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/wuyu
+
+[Install]
+WantedBy=multi-user.target

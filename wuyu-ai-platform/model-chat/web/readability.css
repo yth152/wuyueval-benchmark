@@ -1,0 +1,32 @@
+/* High-contrast reading, with more space when the history rail is collapsed. */
+:root{--muted:#111;color:#111}
+.workspace-shell:not(.history-open) .messages{max-width:1180px}
+.workspace-shell:not(.history-open) .composer-wrap{max-width:1236px}
+.workspace-shell.history-open .messages{max-width:1000px}
+.workspace-shell.history-open .composer-wrap{max-width:1056px}
+.workspace-shell.sources-open .messages{max-width:100%}
+.welcome{max-width:1000px}
+.welcome .welcome-composer{max-width:100%}
+.welcome h1,.welcome-subtitle,.thread-title,.connection,.edition-badge,
+.assistant-label strong,.generating,.reasoning summary,.reasoning summary strong,
+.reasoning summary>span,.reasoning-text,.answer,.answer h1,.answer h2,.answer h3,.answer h4,
+.answer-footer>div,.answer-footer>div>span,.composer-caption,.platform-footer,
+.tool,.tool.selected,.tool.model-trigger,.tool:hover:not(:disabled),
+.model-menu-title,.model-menu small,.model-menu b,.model-menu>button,.model-menu-note,
+.tool-history>summary,.tool-record-title,.tool-record-title>span,.tool-query,.tool-date,
+.tool-sources>summary,.source-list small,.source-list.compact p,.source-id,
+.source-summary-note,.source-pill,.source-pill.active,.source-panel-header h2,
+.source-panel-tabs>button,.source-panel-tabs>button[aria-selected=true],.source-tab-count,
+.source-panel-tabs>button[aria-selected=true] .source-tab-count,.source-panel-filter,
+.source-panel-filter label,.source-card-meta,.source-card-title,.source-card-authors,
+.source-excerpt,.source-excerpt>summary>small,.source-card-footer,.source-card-footer .source-cited,
+.source-panel-note,.source-panel-empty,.file-chip b,.file-chip small,.upload-status,
+.history-heading,.section-label,.history-item,.history-item small,.sidebar-foot,.sidebar-foot>div,
+.sidebar-foot>small,.panel-intro,.eyebrow,.setting small,.settings-note,.setting>select,
+.setting>textarea,.setting b,.waiting small,.jump-latest,.turn-error,.notice,
+.source-list a,.source-list .source-id,.answer a.inline-citation,.source-card-meta>.source-id{color:#111}
+.welcome h1>span{background:none;color:#111;-webkit-text-fill-color:#111}
+.composer textarea::placeholder,.history-search::placeholder{color:#111;opacity:1}
+.reasoning summary>svg,.tool>svg,.source-pill>svg,.answer-footer .icon-button{color:#333}
+.answer a.inline-citation:hover,.source-card-title:hover{color:#111;background-color:#e8edff}
+@media(max-width:620px){.source-panel-filter,.source-panel-note,.composer-caption,.platform-footer{color:#111}}

@@ -1,0 +1,33 @@
+server {
+    listen 80;
+    server_name ai.example.com;
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name ai.example.com;
+    ssl_certificate /etc/letsencrypt/live/ai.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ai.example.com/privkey.pem;
+    client_max_body_size 21m;
+    location = /api/voice/stream {
+        proxy_pass http://127.0.0.1:8920;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_read_timeout 180s;
+        proxy_send_timeout 180s;
+        proxy_buffering off;
+    }
+    location / {
+        proxy_pass http://127.0.0.1:8920;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_buffering off;
+        proxy_read_timeout 1200s;
+        proxy_send_timeout 1200s;
+    }
+}
